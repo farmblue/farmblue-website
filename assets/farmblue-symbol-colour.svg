@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Farmblue">
+<defs>
+<clipPath id="scolourc"><path d="M 26 174 C 26 92 92 26 174 26 C 174 108 108 174 26 174 Z"/></clipPath>
+<mask id="scolourm" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><rect width="200" height="200" fill="black"/><path d="M 26 174 C 26 92 92 26 174 26 C 174 108 108 174 26 174 Z" fill="white"/><path d="M 36 168 C 66 130 106 90 158 42 C 108 98 74 136 36 168 Z" fill="black"/></mask>
+</defs>
+<g mask="url(#scolourm)"><g clip-path="url(#scolourc)"><rect width="200" height="200" fill="#7FA83F"/><path d="M 0 200 L 0 136 C 22 118 46 134 66 132 C 92 129 104 108 128 104 C 150 100 162 104 200 90 L 200 200 Z" fill="#2C6A93"/></g></g>
+</svg>
