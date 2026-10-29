@@ -101,7 +101,9 @@ footer .tlink{color:#FFFFFF}
 .rise{animation:rise 700ms cubic-bezier(.23,1,.32,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .d1{animation-delay:80ms}.d2{animation-delay:160ms}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 700ms cubic-bezier(.23,1,.32,1),transform 700ms cubic-bezier(.23,1,.32,1)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 500ms cubic-bezier(.23,1,.32,1),transform 500ms cubic-bezier(.23,1,.32,1)}
+.person img{opacity:0;transition:opacity 400ms ease}
+.person img.loaded,.no-js .person img{opacity:1}
 .reveal.in{opacity:1;transform:none}
 .no-js .reveal{opacity:1;transform:none}
 @media (hover:hover) and (pointer:fine){.btn:hover{background:var(--sea)}.send:hover{background:#94BC55}.tlink:hover{color:var(--sea)}footer .tlink:hover{color:#A6CC62}.cta:hover{background:var(--ink);color:#FFFFFF}.chip:hover{opacity:1}}
@@ -342,12 +344,18 @@ footer .tlink{color:#FFFFFF}
     window.location.href = 'mailto:connect@farmblue.in?subject=' + encodeURIComponent('Enquiry: ' + v('f-type')) + '&body=' + encodeURIComponent(body);
   });
 
+  // team photos fade in when they finish loading, so the page does not jump
+  document.querySelectorAll('.person img').forEach(function (img) {
+    if (img.complete && img.naturalWidth) { img.classList.add('loaded'); } else { img.addEventListener('load', function () { img.classList.add('loaded'); }); }
+  });
   var items = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('in'); }); return; }
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
   }, { rootMargin: '0px 0px -10% 0px' });
   items.forEach(function (el) { io.observe(el); });
+  // team cards arrive one after another along each row rather than all at once
+  document.querySelectorAll('.person.reveal').forEach(function (el, i) { el.style.transitionDelay = (i % 4) * 70 + 'ms'; });
 })();
 </script>
 </body>
